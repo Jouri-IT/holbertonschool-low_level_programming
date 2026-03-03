@@ -1,1 +1,1 @@
-This project contains the _isupper function which checks for uppercase characters.
+This project covers more functions and nested loops in C.
