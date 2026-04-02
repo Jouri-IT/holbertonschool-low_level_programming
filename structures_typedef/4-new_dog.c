@@ -2,6 +2,33 @@
 #include <stdlib.h>
 
 /**
+ * _strdup - duplicates a string
+ * @str: string to duplicate
+ *
+ * Return: pointer to new string, or NULL if fails
+ */
+char *_strdup(char *str)
+{
+	char *dup;
+	unsigned int i, len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	dup = malloc(len + 1);
+	if (dup == NULL)
+		return (NULL);
+	i = 0;
+	while (str[i])
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+/**
  * new_dog - creates a new dog
  * @name: name of the dog
  * @age: age of the dog
@@ -12,47 +39,23 @@
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog;
-	unsigned int i;
-	unsigned int len_name;
-	unsigned int len_owner;
-
-	len_name = 0;
-	while (name[len_name])
-		len_name++;
-	len_owner = 0;
-	while (owner[len_owner])
-		len_owner++;
 
 	dog = malloc(sizeof(dog_t));
 	if (dog == NULL)
 		return (NULL);
-	dog->name = malloc(len_name + 1);
+	dog->name = _strdup(name);
 	if (dog->name == NULL)
 	{
 		free(dog);
 		return (NULL);
 	}
-	dog->owner = malloc(len_owner + 1);
+	dog->owner = _strdup(owner);
 	if (dog->owner == NULL)
 	{
 		free(dog->name);
 		free(dog);
 		return (NULL);
 	}
-	i = 0;
-	while (name[i])
-	{
-		dog->name[i] = name[i];
-		i++;
-	}
-	dog->name[i] = '\0';
-	i = 0;
-	while (owner[i])
-	{
-		dog->owner[i] = owner[i];
-		i++;
-	}
-	dog->owner[i] = '\0';
 	dog->age = age;
 	return (dog);
 }
