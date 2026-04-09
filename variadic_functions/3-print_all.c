@@ -11,14 +11,13 @@ void print_all(const char * const format, ...)
 	unsigned int i;
 	char *sep;
 	char *s;
-	int printed;
 
 	va_start(args, format);
 	i = 0;
 	sep = "";
 	while (format && format[i])
 	{
-		printed = 1;
+		s = NULL;
 		if (format[i] == 'c')
 			printf("%s%c", sep, va_arg(args, int));
 		else if (format[i] == 'i')
@@ -33,9 +32,11 @@ void print_all(const char * const format, ...)
 			printf("%s%s", sep, s);
 		}
 		else
-			printed = 0;
-		if (printed)
-			sep = ", ";
+		{
+			i++;
+			continue;
+		}
+		sep = ", ";
 		i++;
 	}
 	va_end(args);
