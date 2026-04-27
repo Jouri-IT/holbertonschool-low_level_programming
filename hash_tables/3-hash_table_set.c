@@ -1,24 +1,16 @@
 #include "hash_tables.h"
 
 /**
- * hash_table_set - Adds an element to the hash table
- * @ht: The hash table to add or update the key/value to
- * @key: The key (cannot be empty)
- * @value: The value associated with the key
+ * update_value - Updates the value of an existing key
+ * @current: The current node to check
+ * @key: The key to search for
+ * @value: The new value
  *
- * Return: 1 on success, 0 on failure
+ * Return: 1 if updated, 0 if key not found
  */
-int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+static int update_value(hash_node_t *current, const char *key,
+			const char *value)
 {
-	hash_node_t *node, *current;
-	unsigned long int index;
-
-	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
-		return (0);
-
-	index = key_index((const unsigned char *)key, ht->size);
-	current = ht->array[index];
-
 	while (current != NULL)
 	{
 		if (strcmp(current->key, key) == 0)
@@ -29,6 +21,29 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		}
 		current = current->next;
 	}
+	return (0);
+}
+
+/**
+ * hash_table_set - Adds an element to the hash table
+ * @ht: The hash table to add or update the key/value to
+ * @key: The key (cannot be empty)
+ * @value: The value associated with the key
+ *
+ * Return: 1 on success, 0 on failure
+ */
+int hash_table_set(hash_table_t *ht, const char *key, const char *value)
+{
+	hash_node_t *node;
+	unsigned long int index;
+
+	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
+		return (0);
+
+	index = key_index((const unsigned char *)key, ht->size);
+
+	if (update_value(ht->array[index], key, value))
+		return (1);
 
 	node = malloc(sizeof(hash_node_t));
 	if (node == NULL)
