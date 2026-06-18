@@ -1,6 +1,6 @@
 # holbertonschool-low_level_programming
 
-low-level C projects from the Holberton School (Tuwaiq) software engineering track — covering the C compilation pipeline, pointers, memory management, recursion, structures, function pointers, linked lists, hash tables, and file i/o.
+low-level C projects covering the C compilation pipeline, pointers, memory management, recursion, structures, function pointers, linked lists, hash tables, and file i/o.
 
 ---
 
