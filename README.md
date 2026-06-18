@@ -115,14 +115,14 @@ writing reusable functions and nesting loops.
 
 ## more_functions_nested_loops
 
-> ⚠️ this folder is incomplete — only `main.h` exists, and the one implementation in it (`_isupper`) ended up written directly inside the header instead of its own `.c` file. worth finishing or removing before making the repo public.
+more functions and nested loops practice.
 
 <details>
 <summary>tasks</summary>
 
 | file | description |
 | --- | --- |
-| `main.h` | header declaring `_isupper`; the function body is (incorrectly) implemented here instead of in a separate `.c` file |
+| `0-isupper.c` | `_isupper(c)` — checks for an uppercase character |
 
 </details>
 
