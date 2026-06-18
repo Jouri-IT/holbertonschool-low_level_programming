@@ -377,13 +377,3 @@ for tasks split across multiple files (e.g. `function_pointers/3-*.c`), compile 
 ```bash
 gcc -Wall -Werror -Wextra -pedantic -std=gnu89 3-main.c 3-get_op_func.c 3-op_functions.c -o calc
 ```
-
----
-
-## before making this repo public
-
-a couple of leftover artifacts from the original setup are worth cleaning up first:
-
-* two stray files sit at the repo root — `2-strchr.c` and `main.h` — duplicates of files that belong inside `pointers_arrays_strings/`. safe to delete from the root.
-* an empty nested folder, `holbertonschool-low_level_programming/`, appears to be a leftover from an early git init. safe to delete.
-* `more_functions_nested_loops/` is incomplete (see note above) — worth finishing or removing the folder before sharing.
